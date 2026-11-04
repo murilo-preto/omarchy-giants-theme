@@ -9,6 +9,11 @@ This is for the original creators who made foundational contributions to compute
 
 ![Giants preview](preview.jpg)
 
+> **This fork** of [dhh/omarchy-giants-theme](https://github.com/dhh/omarchy-giants-theme)
+> adds a glass look: a translucent bar, menus and notifications with the
+> wallpaper blurred behind them, see-through windows, a soft shadow, and thin
+> hairline borders. See [Glass](#glass) below.
+
 ## Wallpapers
 
 Ten portraits of the giants everything since was built on, drawn as ink on
@@ -28,9 +33,50 @@ Research notes, source portrait credits, licenses, and generation details are in
 
 ## Install
 
+Omarchy will not load `*.lua` or a terminal config from a theme installed with
+`omarchy theme install`, because those files run code and a cloned theme comes
+from someone else. It drops them and prints what it skipped. To get the full
+glass look, clone your own working copy and link it into the themes folder:
+
 ```bash
-omarchy theme install https://github.com/dhh/omarchy-giants-theme
+git clone https://github.com/murilo-preto/omarchy-giants-theme.git ~/Github/omarchy-giants-theme
+ln -s ~/Github/omarchy-giants-theme ~/.config/omarchy/themes/giants
+omarchy theme set giants
 ```
+
+`omarchy theme install https://github.com/murilo-preto/omarchy-giants-theme`
+still works, but you only get what `shell.toml` provides: a translucent bar and
+menus with nothing blurred behind them, so they look see-through rather than
+frosted.
+
+To pull in upstream changes (new wallpapers, palette fixes):
+
+```bash
+git remote add upstream https://github.com/dhh/omarchy-giants-theme.git  # once
+git pull upstream main
+```
+
+## Glass
+
+Ported from [omarchy-minimal-black](https://github.com/murilo-preto/omarchy-minimal-black),
+recolored with the Giants palette.
+
+| File | Purpose |
+| --- | --- |
+| `hyprland.lua` | Blur, soft shadow, 14px rounding, 1px translucent cream borders, window opacity, and a layer rule that blurs behind the bar, menus, notifications and popups |
+| `shell.toml` | Omarchy's generated Giants shell colors with lower alphas: bar `0.55`, cards `0.70`, hairline borders at `0.15` |
+| `alacritty.toml` | Terminal palette + `[window] opacity = 0.85` |
+
+The window and terminal alphas compound. Alacritty's `0.85` applies to its
+background, and the Hyprland window rule's `0.94` applies to the whole window.
+The terminal background ends up near `0.80`, while text stays at `0.94`.
+
+The layer rule's `ignore_alpha = 0.4` sits between the full-screen scrims
+(<= 0.30) and the cards (>= 0.55). Opening a menu therefore blurs only what is
+behind the card, not the whole screen. Keep that ordering if you tune the alphas.
+
+Shipping `alacritty.toml` means Omarchy skips its template for this theme, so the
+palette there is a hand copy of `colors.toml`. Keep the two in sync.
 
 ## Palette
 

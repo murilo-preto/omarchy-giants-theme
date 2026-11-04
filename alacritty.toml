@@ -1,0 +1,53 @@
+# Giants - Alacritty colors + window transparency.
+# Palette copied from the generated template output; keep in sync with colors.toml.
+
+[window]
+opacity = 0.85
+
+[colors.primary]
+background = "#27241f"
+foreground = "#E1D5C2"
+
+[colors.cursor]
+text = "#27241f"
+cursor = "#e9e0d1"
+
+[colors.vi_mode_cursor]
+text = "#27241f"
+cursor = "#e9e0d1"
+
+[colors.search.matches]
+foreground = "#27241f"
+background = "#fff2c8"
+
+[colors.search.focused_match]
+foreground = "#27241f"
+background = "#b3826a"
+
+[colors.footer_bar]
+foreground = "#27241f"
+background = "#E1D5C2"
+
+[colors.selection]
+text = "#e9e0d1"
+background = "#4f4840"
+
+[colors.normal]
+black = "#27241f"
+red = "#b3826a"
+green = "#cac4a2"
+yellow = "#fff2c8"
+blue = "#97786d"
+magenta = "#c6a48e"
+cyan = "#d9dfb2"
+white = "#E1D5C2"
+
+[colors.bright]
+black = "#8a857a"
+red = "#bea78c"
+green = "#e2dbae"
+yellow = "#fff1be"
+blue = "#b28b7e"
+magenta = "#e3b89b"
+cyan = "#f0f7c0"
+white = "#e9e0d1"
